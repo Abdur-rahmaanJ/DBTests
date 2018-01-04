@@ -30,7 +30,7 @@ db = DB()
 
 data = db.view_db('links')
 # <span class="img__body" style="background-image: url(https://chat.whatsapp.com/invite/icon/FaXlieEBYiH4pFTXqO6lWe);"></span>
-with open('output/sample_gen.html','w+') as f:
+with open('output/sample_gen3.html','w+') as f:
     f.write(skeleton_s)
     for elem in data:
         name = elem[0]
@@ -43,11 +43,11 @@ with open('output/sample_gen.html','w+') as f:
         image_link = 'https://chat.whatsapp.com/invite/icon/'+link.split('/')[-1]
         
         text = ('''
-                    <div class="link-outer" style="background-color:rgba({},{},{}, 0.5)">
+                    <div class="link-outer">
                         <div class="group-name">{}</div>
                         <div class="group-image"><img src="{}"/></div>
                         <div class="group-link"><a href="{}">{}</a></div>
-                    </div>'''.format(randrange(255),randrange(255),randrange(255),name, image_link, link, placeholder))
+                    </div>'''.format(name, image_link, link, placeholder))
         print(image_link)
         f.write(text)
     f.write(skeleton_e)
